@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
       
-        title: const Text(''),
+        title: const Text('master branch'),
       ),
       body: Center(
 
