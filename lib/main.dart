@@ -47,7 +47,7 @@ class MyHomePage extends StatelessWidget {
    
   var myProvider=Provider.of<MainProvider>(context);
   if(myProvider.ahadeethList.isEmpty){
-        myProvider.loadData();
+        myProvider.loadAhadeeth();
   }
   
     return Stack(

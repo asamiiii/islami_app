@@ -6,13 +6,15 @@ import 'package:provider/provider.dart';
 class MainProvider extends ChangeNotifier
 {
    List<String> hadeethTitle=[];
+   List<String> ayat=[];
    String ahadeethData = '';
+   String quranData = '';
    List<String>ahadeethList=[];
    String ahadeethDataWithOutTitle = '';
    List<String>ahadeethLinesList=[];
 
 
-   int currentIndexx = 3;
+   int currentIndexx = 2;
    void changeIndex(int index){
     
       currentIndexx=index;
@@ -20,7 +22,7 @@ class MainProvider extends ChangeNotifier
     
    }
 
-     Future<void> loadData() async {
+     Future<void> loadAhadeeth() async {
       if(ahadeethList.isEmpty){
         final loadedData = await rootBundle.loadString('assets/files/ahadeth.txt');
     ahadeethData = loadedData;
@@ -33,7 +35,7 @@ class MainProvider extends ChangeNotifier
       hadeethTitle.add(ahadeethLinesList[0]);
       //print(hadeethTitle);
       ahadeethLinesList.removeAt(0);
-      print(ahadeethLinesList);
+      //print(ahadeethLinesList);
       notifyListeners();
        }
       }
@@ -41,4 +43,15 @@ class MainProvider extends ChangeNotifier
     
   }
 
-} 
+       Future<void> loadQuran(int index) async {
+        final loadedData = await rootBundle.loadString('assets/files/quran_files/$index.txt');
+            quranData= loadedData;
+            ayat = quranData.split('\n');
+            print(quranData);
+             notifyListeners();
+        
+       }
+      }
+    
+    
+  

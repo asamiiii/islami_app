@@ -23,7 +23,8 @@ class HadeethScreen extends StatelessWidget {
           margin: const EdgeInsets.only(top: 180),
           width: double.infinity,
           height: MediaQuery.of(context).size.height*0.8,
-          child: Column(
+          child: myProvider.ahadeethList.isEmpty?const Center(child: CircularProgressIndicator()):
+           Column(
               children: [
                 const Divider(
                   color: goldColorMainColor,
