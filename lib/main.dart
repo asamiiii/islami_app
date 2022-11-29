@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/app_provider_st_mng/main_provider.dart';
 import 'package:islami_app/app_theme/main_theme.dart';
+import 'package:islami_app/screens/hadeeth_screen/hadeeth_detailes.dart';
 import 'package:islami_app/screens/main_layout/widget.dart';
 import 'package:provider/provider.dart';
 import 'fixed_data/fixed.dart';
@@ -27,6 +28,8 @@ class MyApp extends StatelessWidget {
       create: (context) => MainProvider(),
       child:Consumer<MainProvider> (
         builder: (context, value, child) => MaterialApp(
+        routes:{
+          HadeeathDetailesScreen.routName:(context) =>  HadeeathDetailesScreen()},
         debugShowCheckedModeBanner: false,
         theme: mainTheme(),
         home: const MyHomePage(),
@@ -43,6 +46,10 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
    
   var myProvider=Provider.of<MainProvider>(context);
+  if(myProvider.ahadeethList.isEmpty){
+        myProvider.loadData();
+  }
+  
     return Stack(
         children: [
           const MainBgImage(),
