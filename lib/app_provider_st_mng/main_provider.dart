@@ -13,6 +13,47 @@ class MainProvider extends ChangeNotifier
    String ahadeethDataWithOutTitle = '';
    List<String>ahadeethLinesList=[];
 
+   int sebhaCounter = 0;
+   int tasbeehIndex=0;
+   List<String> tasbeehList=['How great is our God','Thank God ','there is no god but Allah','Allah is the greatest'];
+
+   void addNumberOFSebha(){
+    if(sebhaCounter<33){
+      sebhaCounter++;
+      notifyListeners();
+    }
+    else{
+      sebhaCounter=0;
+      if(tasbeehIndex<tasbeehList.length){
+        tasbeehIndex++;
+        notifyListeners();
+      }
+      if(tasbeehIndex==tasbeehList.length){
+        tasbeehIndex=0;
+        notifyListeners();
+      }
+
+   }
+    
+    
+    notifyListeners();
+    
+   }
+
+  void tasbeehChange(){
+        sebhaCounter=0;
+        if(tasbeehIndex<tasbeehList.length){
+        tasbeehIndex++;
+        notifyListeners();
+      }
+      if(tasbeehIndex==tasbeehList.length){
+        tasbeehIndex=0;
+        notifyListeners();
+      }
+
+      }
+
+
 
    int currentIndexx = 2;
    void changeIndex(int index){
