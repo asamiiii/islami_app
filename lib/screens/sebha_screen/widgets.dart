@@ -81,9 +81,7 @@ class TasbbehBox extends StatelessWidget {
                     height: 50,
                     decoration: const BoxDecoration(
                       color: goldColorMainColor,
-                      borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(10),
-                        topLeft: Radius.circular(10)
+                      borderRadius: BorderRadius.all(Radius.circular(50)
                         )
                     ),
                     child:  Center(

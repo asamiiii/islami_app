@@ -28,7 +28,7 @@ class QuranScreenDetailes extends StatelessWidget {
             ),
             backgroundColor: Colors.transparent,
             body: Container(
-              margin: const EdgeInsets.all(25),
+              margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
               decoration: const BoxDecoration(
                 color: Colors.black12,
                 borderRadius:BorderRadius.only(
@@ -42,15 +42,54 @@ class QuranScreenDetailes extends StatelessWidget {
                   margin: const EdgeInsets.all(30),
                   child: ListView.separated(
                     itemBuilder: (context, index) {
-                      return Center(child: Text(myProvider.ayat[index],style: Theme.of(context).textTheme.headline3,textDirection:TextDirection.rtl ));
+                      return 
+                          SizedBox(
+                            //width: MediaQuery.of(context).size.width*0.02,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Stack(
+                                  
+                                  children: [
+                                    Positioned(
+                                      //left: 10,
+                                      child: Image.asset('assets/images/star.png',height: 40,width: 40,)),
+                                    Positioned(
+                                      width: 40,
+                                      height: 40,
+                                      //top:7,
+                                      child: Center(child: Text(myProvider.replaceArabicNumber((index+1).toString()),
+                                      style: const TextStyle(
+                                        fontSize: 9,
+                                        color: Colors.brown,
+                                        fontWeight: FontWeight.bold
+                                        ),)))
+                                  ],
+                                ),
+                                Expanded(
+                                  child: Text('${myProvider.ayat[index]} ',
+                                    style: Theme.of(context).textTheme.headline3,
+                                    textDirection:TextDirection.rtl,textAlign: TextAlign.center, ),
+                                ),
+                                
+                              ],
+                            ),
+                          );
+                      
+                         
+                        
                     },
-                     separatorBuilder: (context, index) => const Divider(
-                        endIndent: 2,
-                        indent: 2,
-                  color: goldColorMainColor,
-                  thickness: 1,
-                  ),
-                   itemCount:myProvider.ayat.length ))
+                    itemCount:myProvider.ayat.length ,
+                     separatorBuilder: (context, index) {
+                      return    const Divider(
+                        color: goldColorMainColor,
+                        thickness: 2,
+                        indent: 10,
+                        endIndent: 10,
+                      );
+                     }
+                   ))
              
             
               ),
