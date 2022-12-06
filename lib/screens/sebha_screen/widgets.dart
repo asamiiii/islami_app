@@ -70,6 +70,8 @@ class TasbbehBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                  InkWell(
+                  borderRadius: BorderRadius.circular(50),
+                  highlightColor: Colors.amber,
                   onTap: () {
                     return myProvider.addNumberOFSebha();
                   },
@@ -80,7 +82,7 @@ class TasbbehBox extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     height: 50,
                     decoration: const BoxDecoration(
-                      color: goldColorMainColor,
+                      //color: goldColorMainColor,
                       borderRadius: BorderRadius.all(Radius.circular(50)
                         )
                     ),
@@ -91,3 +93,153 @@ class TasbbehBox extends StatelessWidget {
             );
   }
 }
+
+class AddTasbeeha extends StatelessWidget {
+   AddTasbeeha({super.key});
+  TextEditingController tasbeehaController=TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    var myProvider=Provider.of<MainProvider>(context);
+    return Container(
+                margin: const EdgeInsets.only(top: 20),
+                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                   children: [
+                     InkWell(
+                      onTap: () {
+                        showBottomSheet(
+                        context: context,
+                        builder: (context) => Container(
+                          height: MediaQuery.of(context).size.height*0.40,
+                         color: goldColorMainColor,
+                         child: SingleChildScrollView(
+                           child: Column(
+                            
+                            children: [
+                              Container(
+                                margin: const EdgeInsets.symmetric(vertical: 50,horizontal: 50),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5),
+                                                                  ),
+                                child:  TextField(
+                            controller:tasbeehaController ,
+                            decoration: const InputDecoration(
+                            hintText: 'Add Tasbeeh',
+                            hintStyle:
+                             TextStyle(color: Colors.grey,),),
+                           style:  const TextStyle(
+                             fontSize: 20,
+                            color: Colors.black,
+                                 ),),
+                              ),
+                                  
+                                  Container(
+                                 width: 200,
+                                 height: 50,
+                                 color:Colors.brown,
+                                 child: TextButton(
+                                 onPressed: (){
+                                   myProvider.addTasbeeha(tasbeehaController.text);
+                                   Navigator.pop(context);
+                                 },
+                                 child: const Text(
+                                     'Add',
+                                       style: TextStyle(color: Color.fromARGB(255, 171, 186, 224)),
+            )))
+                               
+                            ],
+                           ),
+                         ),
+                  ));
+                      },
+                       child: Container(
+                        decoration: const BoxDecoration(
+                          color: goldColorMainColor,
+                          borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(10),
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10)
+                            )
+                        ),
+                        width: 170,
+                        height: 40,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children:const [
+                             Text('Add Tasbeeh'),
+                             Icon(Icons.add),
+                          ],
+                        ),
+                        ),
+                     ),
+                   ],
+                 ),
+               );
+  }
+}
+
+class RemoveTasbeeha extends StatelessWidget {
+   RemoveTasbeeha({super.key});
+  TextEditingController tasbeehaController=TextEditingController();
+  @override
+  Widget build(BuildContext context) {
+    var myProvider=Provider.of<MainProvider>(context);
+    return Container(
+                margin: const EdgeInsets.only(top: 20),
+                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                   children: [
+                     InkWell(
+                       child: Container(
+                        decoration: const BoxDecoration(
+                          color: goldColorMainColor,
+                          borderRadius: BorderRadius.only(
+                            bottomRight: Radius.circular(10),
+                            topLeft: Radius.circular(10),
+                            topRight: Radius.circular(10)
+                            )
+                        ),
+                        width: 150,
+                        height: 40,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children:const [
+                             Text('Remove Tasbeeh'),
+                             Icon(Icons.remove),
+                          ],
+                        ),
+                        ),
+                        onTap: () {
+                        showBottomSheet(
+                        context: context,
+                        builder: (context) => Container(
+                          height: MediaQuery.of(context).size.height*0.40,
+                         color: goldColorMainColor,
+                         child: ListView.builder(
+                          itemBuilder: (context, index) {
+                            return Dismissible(
+                              background: Container(color: Colors.red),
+                              key: Key(myProvider.tasbeehList[index]),
+                              onDismissed: (direction) {
+                                if(myProvider.tasbeehList.length>1){
+                                   myProvider.tasbeehList.removeAt(index);
+                                   ScaffoldMessenger.of(context)
+                                   .showSnackBar(const SnackBar(content: Text(' dismissed')));
+                                }
+                                else{
+                                  ScaffoldMessenger.of(context)
+                                   .showSnackBar(const SnackBar(content: Text('at least 1 item')));
+
+                                }
+                                
+                              },  child: ListTile(
+                                     title: Text(myProvider.tasbeehList[index]),
+                              )
+                          ,);
+                         },
+                         itemCount: myProvider.tasbeehList.length,
+                          )));})]));}}
+              
+  
+

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class MainProvider extends ChangeNotifier
 {
@@ -9,9 +10,15 @@ class MainProvider extends ChangeNotifier
    List<String> ayat=[];
    String ahadeethData = '';
    String quranData = '';
+   String selectedAya='';
+   int selectedAyaIndex=0;
+   int? selectedSuraOfAyaIndex;
    List<String>ahadeethList=[];
    String ahadeethDataWithOutTitle = '';
    List<String>ahadeethLinesList=[];
+
+    final ItemScrollController itemScrollController =ItemScrollController();
+    final ItemPositionsListener itemPositionsListener =ItemPositionsListener.create();
 
    int sebhaCounter = 0;
    int tasbeehIndex=0;
@@ -66,7 +73,7 @@ class MainProvider extends ChangeNotifier
 
 
 
-   int currentIndexx = 2;
+   int currentIndexx = 3;
    void changeIndex(int index){
     
       currentIndexx=index;
@@ -99,9 +106,41 @@ class MainProvider extends ChangeNotifier
         final loadedData = await rootBundle.loadString('assets/files/quran_files/$index.txt');
             quranData= loadedData;
             ayat = quranData.trim().split('\n');
-            print(quranData);
+            print(index);
              notifyListeners();
         
+       }
+
+       addFlag(int index,int selectedSuraIndex){
+         selectedAya=ayat[index];
+         selectedAyaIndex=index;
+         selectedSuraOfAyaIndex=selectedSuraIndex;
+         notifyListeners();             //myProvider.selectedAyaIndex=index;
+       }
+
+        bool? isFlaged ()  {
+        for(int i =0;i<ayat.length;i++){
+          if(selectedAya==ayat[i]){
+            print('---------$selectedAya--------');
+            if(itemScrollController.isAttached){
+               itemScrollController.scrollTo(
+               index: selectedAyaIndex,
+               duration: const Duration(seconds: 1),
+               curve: Curves.easeInOutCubic);
+                 }
+            return true;
+          }
+        }
+        return false;
+       }
+
+      void addTasbeeha(String tasbeehaText){
+              if(tasbeehaText.isNotEmpty){
+                tasbeehList.add(tasbeehaText);
+                notifyListeners();
+              }
+              
+              
        }
       }
     

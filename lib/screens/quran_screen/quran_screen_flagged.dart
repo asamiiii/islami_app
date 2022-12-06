@@ -1,15 +1,17 @@
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+
 import '../../app_provider_st_mng/main_provider.dart';
 import '../../app_theme/main_theme.dart';
 import '../main_layout/widget.dart';
-import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
-class QuranScreenDetailes extends StatelessWidget {
+class QuranScreenDetailesSelected extends StatelessWidget {
     String? title;
     int? index;
 
-   QuranScreenDetailes({super.key,this.title,this.index});
+   QuranScreenDetailesSelected({super.key,this.title,this.index});
 
 
 
@@ -35,21 +37,20 @@ class QuranScreenDetailes extends StatelessWidget {
             ),
             backgroundColor: Colors.transparent,
             body: Container(
-              margin: const EdgeInsets.symmetric(horizontal: 5,vertical: 5),
+              margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 5),
               decoration: const BoxDecoration(
                 color: Colors.black12,
                 borderRadius:BorderRadius.only(
-                  topLeft: Radius.circular(50),
-                  //topRight: Radius.circular(50),
-                  bottomRight: Radius.circular(50),
+                  topLeft: Radius.circular(70),
+                  topRight: Radius.circular(70),
+                  bottomRight: Radius.circular(70),
                   )
               ),
-              child: myProvider.ayat.isEmpty? 
-              const Center(child:  CircularProgressIndicator()):
+              child: myProvider.ayat.isEmpty? const Center(child:  CircularProgressIndicator()):
                Container(
                   margin: const EdgeInsets.all(30),
                   child: ScrollablePositionedList.separated(
-                    initialScrollIndex: myProvider.isFlaged()! ? myProvider.selectedAyaIndex:0 ,
+                    initialScrollIndex: myProvider.selectedAyaIndex ,
                     itemScrollController: myProvider.itemScrollController,
                     itemPositionsListener: myProvider.itemPositionsListener,
                     itemBuilder: (context, index) {
@@ -79,12 +80,12 @@ class QuranScreenDetailes extends StatelessWidget {
                                 Expanded(
                                   child: InkWell(
                                     onLongPress: () {
-                                     myProvider.addFlag(index,this.index!);
+                                     myProvider.addFlag(index,myProvider.selectedSuraOfAyaIndex!);
                                     print(this.index!);
                                      //print(myProvider.selectedAya);
                                     },
                                     child: Text(myProvider.ayat[index],
-                                      style: Theme.of(context).textTheme.headline1,
+                                      style: Theme.of(context).textTheme.headline3,
                                       textDirection:TextDirection.rtl,textAlign: TextAlign.center, ),
                                   ),
                                 ),
@@ -103,7 +104,7 @@ class QuranScreenDetailes extends StatelessWidget {
                      separatorBuilder: (context, index) {
                       return    const Divider(
                         color: goldColorMainColor,
-                        thickness: 0.5,
+                        thickness: 2,
                         indent: 10,
                         endIndent: 10,
                       );
@@ -118,4 +119,3 @@ class QuranScreenDetailes extends StatelessWidget {
     );
   }
 }
-
