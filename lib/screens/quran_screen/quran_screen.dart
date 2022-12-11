@@ -7,6 +7,7 @@ import '../../app_provider_st_mng/main_provider.dart';
 import '../../app_theme/light_theme.dart';
 import '../../fixed_data/fixed.dart';
 import 'quran_screen_flagged.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuranScreen extends StatelessWidget {
   const QuranScreen({super.key});
@@ -33,7 +34,8 @@ class QuranScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:[
-                     Text('Sura Name',style: Theme.of(context).textTheme.headline2,)
+                   
+                     Text(AppLocalizations.of(context).suraname,style: Theme.of(context).textTheme.headline2,)
                   ],
                 ),
                             const Divider(

@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../../app_provider_st_mng/main_provider.dart';
 import '../../app_theme/light_theme.dart';
 import 'hadeeth_detailes.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class HadeethScreen extends StatelessWidget {
   const HadeethScreen({super.key});
 
@@ -29,7 +29,7 @@ class HadeethScreen extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children:[
-                     Text('Ahadeeth',style: Theme.of(context).textTheme.headline2,)
+                     Text(AppLocalizations.of(context).hadeeth,style: Theme.of(context).textTheme.headline2,)
                   ],
                 ),
                             const Divider(

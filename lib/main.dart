@@ -6,6 +6,8 @@ import 'package:islami_app/screens/hadeeth_screen/hadeeth_detailes.dart';
 import 'package:islami_app/screens/main_layout/widget.dart';
 import 'package:provider/provider.dart';
 import 'fixed_data/fixed.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,6 +31,16 @@ class MyApp extends StatelessWidget {
       create: (context) => MainProvider(),
       child:Consumer<MainProvider> (
         builder: (context, value, child) => MaterialApp(
+         localizationsDelegates: const[
+    AppLocalizations.delegate, 
+    GlobalMaterialLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+  ],
+  supportedLocales:const [
+    Locale('en', ''),
+    Locale('ar', ''), 
+  ],
         routes:{
           HadeeathDetailesScreen.routName:(context) =>  const HadeeathDetailesScreen()},
         debugShowCheckedModeBanner: false,
@@ -63,7 +75,7 @@ class MyHomePage extends StatelessWidget {
               centerTitle: true,
               elevation: 0,
               backgroundColor: Colors.transparent,
-              title:  Text('Islami',style: Theme.of(context).textTheme.headline1,),
+              title:  Text(AppLocalizations.of(context).apptitle,style: Theme.of(context).textTheme.headline1,),
             ),
             body: screensList[myProvider.currentIndexx],
             bottomNavigationBar:const BottomNavBar() ,

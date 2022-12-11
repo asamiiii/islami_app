@@ -162,7 +162,7 @@ class AddTasbeeha extends StatelessWidget {
                             topRight: Radius.circular(10)
                             )
                         ),
-                        width: 170,
+                        width: 150,
                         height: 40,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -205,7 +205,7 @@ class RemoveTasbeeha extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children:const [
-                             Text('Remove Tasbeeh'),
+                             Text('Remove '),
                              Icon(Icons.remove),
                           ],
                         ),

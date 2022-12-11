@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:islami_app/app_provider_st_mng/main_provider.dart';
 import 'package:provider/provider.dart';
 import '../../app_theme/light_theme.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 class MainBgImage extends StatelessWidget {
@@ -36,11 +37,11 @@ class BottomNavBar extends StatelessWidget {
 
 
 List<BottomNavigationBarItem>bottomNavBarItemList=[
-              BottomNavigationBarItem(icon: Image.asset('assets/images/radio_blue.png',height: 30, color:myProvider.changeIconColor(0)),label: 'Radio',backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
-              BottomNavigationBarItem(icon: Image.asset('assets/images/sebha_blue.png',height: 30,color:myProvider.changeIconColor(1)),label: 'Sebha',backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
-              BottomNavigationBarItem(icon: Image.asset('assets/images/Path 1.png',height: 30,color:myProvider.changeIconColor(2)),label: 'Hadeath',backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
-              BottomNavigationBarItem(icon: Image.asset('assets/images/moshaf_gold.png',height: 30,color: myProvider.changeIconColor(3)),label: 'Quran',backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
-              BottomNavigationBarItem(icon: Icon(Icons.settings,color:myProvider.changeIconColor(4)),label: 'Settings',backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
+              BottomNavigationBarItem(icon: Image.asset('assets/images/radio_blue.png',height: 30, color:myProvider.changeIconColor(0)),label: AppLocalizations.of(context).radio,backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
+              BottomNavigationBarItem(icon: Image.asset('assets/images/sebha_blue.png',height: 30,color:myProvider.changeIconColor(1)),label: AppLocalizations.of(context).sebha,backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
+              BottomNavigationBarItem(icon: Image.asset('assets/images/Path 1.png',height: 30,color:myProvider.changeIconColor(2)),label: AppLocalizations.of(context).hadeeth,backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
+              BottomNavigationBarItem(icon: Image.asset('assets/images/moshaf_gold.png',height: 30,color: myProvider.changeIconColor(3)),label: AppLocalizations.of(context).quran,backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
+              BottomNavigationBarItem(icon: Icon(Icons.settings,color:myProvider.changeIconColor(4)),label: AppLocalizations.of(context).settings,backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
 ];
     return BottomNavigationBar(
             
