@@ -56,6 +56,7 @@ class QuranScreenDetailes extends StatelessWidget {
                       return 
                           SizedBox(
                             child: Row(
+                              textDirection: TextDirection.ltr,
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
