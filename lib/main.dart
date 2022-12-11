@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/app_provider_st_mng/main_provider.dart';
-import 'package:islami_app/app_theme/main_theme.dart';
+import 'package:islami_app/app_theme/light_theme.dart';
+import 'package:islami_app/app_theme/dark_theme.dart';
 import 'package:islami_app/screens/hadeeth_screen/hadeeth_detailes.dart';
 import 'package:islami_app/screens/main_layout/widget.dart';
 import 'package:provider/provider.dart';
@@ -29,9 +30,12 @@ class MyApp extends StatelessWidget {
       child:Consumer<MainProvider> (
         builder: (context, value, child) => MaterialApp(
         routes:{
-          HadeeathDetailesScreen.routName:(context) =>  HadeeathDetailesScreen()},
+          HadeeathDetailesScreen.routName:(context) =>  const HadeeathDetailesScreen()},
         debugShowCheckedModeBanner: false,
-        theme: mainTheme(),
+        theme:mainTheme(),
+        darkTheme: darkThemeMode(),
+        themeMode: value.darkMode! ? ThemeMode.light:ThemeMode.dark ,
+        
         home: const MyHomePage(),
       ),)
     );
@@ -52,7 +56,7 @@ class MyHomePage extends StatelessWidget {
   
     return Stack(
         children: [
-          const MainBgImage(),
+           const MainBgImage(),
           Scaffold(
             backgroundColor: Colors.transparent,
             appBar: AppBar(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../app_provider_st_mng/main_provider.dart';
-import '../../app_theme/main_theme.dart';
+import '../../app_theme/light_theme.dart';
 
 class SebhaTopCenterImage extends StatelessWidget {
   const SebhaTopCenterImage({super.key});
@@ -96,7 +96,7 @@ class TasbbehBox extends StatelessWidget {
 
 class AddTasbeeha extends StatelessWidget {
    AddTasbeeha({super.key});
-  TextEditingController tasbeehaController=TextEditingController();
+  final TextEditingController tasbeehaController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     var myProvider=Provider.of<MainProvider>(context);
@@ -181,7 +181,7 @@ class AddTasbeeha extends StatelessWidget {
 
 class RemoveTasbeeha extends StatelessWidget {
    RemoveTasbeeha({super.key});
-  TextEditingController tasbeehaController=TextEditingController();
+  final TextEditingController tasbeehaController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     var myProvider=Provider.of<MainProvider>(context);

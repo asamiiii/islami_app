@@ -26,8 +26,8 @@ class RadioCenterImage extends StatelessWidget {
 }
 
 class RadioPlayIcons extends StatelessWidget {
-  String? assetsImages;
-   RadioPlayIcons({super.key,this.assetsImages});
+  final String? assetsImages;
+ const RadioPlayIcons({super.key,this.assetsImages});
 
   @override
   Widget build(BuildContext context) {

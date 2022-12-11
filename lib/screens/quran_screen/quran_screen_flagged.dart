@@ -4,14 +4,14 @@ import 'package:provider/provider.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import '../../app_provider_st_mng/main_provider.dart';
-import '../../app_theme/main_theme.dart';
+import '../../app_theme/light_theme.dart';
 import '../main_layout/widget.dart';
 
 class QuranScreenDetailesSelected extends StatelessWidget {
-    String? title;
-    int? index;
+    final String? title;
+    final int? index;
 
-   QuranScreenDetailesSelected({super.key,this.title,this.index});
+   const QuranScreenDetailesSelected({super.key,this.title,this.index});
 
 
 
@@ -81,7 +81,7 @@ class QuranScreenDetailesSelected extends StatelessWidget {
                                   child: InkWell(
                                     onLongPress: () {
                                      myProvider.addFlag(index,myProvider.selectedSuraOfAyaIndex!);
-                                    print(this.index!);
+                                   // print(this.index!);
                                      //print(myProvider.selectedAya);
                                     },
                                     child: Text(myProvider.ayat[index],

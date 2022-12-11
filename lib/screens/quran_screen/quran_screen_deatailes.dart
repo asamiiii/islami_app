@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../app_provider_st_mng/main_provider.dart';
-import '../../app_theme/main_theme.dart';
+import '../../app_theme/light_theme.dart';
 import '../main_layout/widget.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 class QuranScreenDetailes extends StatelessWidget {
-    String? title;
-    int? index;
+    final String? title;
+    final int? index;
 
-   QuranScreenDetailes({super.key,this.title,this.index});
+   const QuranScreenDetailes({super.key,this.title,this.index});
 
 
 
@@ -63,28 +63,23 @@ class QuranScreenDetailes extends StatelessWidget {
                                   children: [
                                     Positioned(
                                       //left: 10,
-                                      child: Image.asset('assets/images/star.png',height: 40,width: 40,)),
+                                      child: myProvider.darkMode! ? Image.asset('assets/images/star.png',height: 40,width: 40,):Image.asset('assets/images/star_dark.png',height: 40,width: 40,)),
                                     Positioned(
                                       width: 40,
                                       height: 40,
                                       //top:7,
-                                      child: Center(child: Text(myProvider.replaceArabicNumber((index+1).toString()),
-                                      style: const TextStyle(
-                                        fontSize: 9,
-                                        color: Colors.brown,
-                                        fontWeight: FontWeight.bold
-                                        ),)))
+                                      child: Center(child: Text(myProvider.replaceArabicNumber((index+1).toString(),),
+                                      style: Theme.of(context).textTheme.headline6,)))
                                   ],
                                 ),
                                 Expanded(
                                   child: InkWell(
                                     onLongPress: () {
                                      myProvider.addFlag(index,this.index!);
-                                    print(this.index!);
                                      //print(myProvider.selectedAya);
                                     },
                                     child: Text(myProvider.ayat[index],
-                                      style: Theme.of(context).textTheme.headline1,
+                                      style: Theme.of(context).textTheme.headline3,
                                       textDirection:TextDirection.rtl,textAlign: TextAlign.center, ),
                                   ),
                                 ),

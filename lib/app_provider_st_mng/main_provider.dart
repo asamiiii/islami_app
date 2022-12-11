@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import '../app_theme/light_theme.dart';
 
 class MainProvider extends ChangeNotifier
 {
+
    List<String> hadeethTitle=[];
    List<String> ayat=[];
    String ahadeethData = '';
@@ -16,12 +16,35 @@ class MainProvider extends ChangeNotifier
    List<String>ahadeethList=[];
    String ahadeethDataWithOutTitle = '';
    List<String>ahadeethLinesList=[];
-
-    final ItemScrollController itemScrollController =ItemScrollController();
-    final ItemPositionsListener itemPositionsListener =ItemPositionsListener.create();
-
+   bool? darkMode = false;
    int sebhaCounter = 0;
    int tasbeehIndex=0;
+
+     final ItemScrollController itemScrollController =ItemScrollController();
+  final ItemPositionsListener itemPositionsListener =ItemPositionsListener.create();
+   
+   void changeThemode(bool? modeVariable)
+   {
+       modeVariable! ? darkMode=true:darkMode=false;
+       notifyListeners();
+   }
+
+    Color changeIconColor(int index){
+    if(currentIndexx==index && darkMode==false)
+    {
+      return yellowDark;
+    }
+    else if(currentIndexx==index && darkMode==true)
+    {
+           return blackColorMainColor;
+    }
+    
+          return whiteColorMainColor ;
+     
+     
+   }
+
+
    List<String> tasbeehList=['How great is our God','Thank God ','there is no god but Allah','Allah is the greatest'];
 
    void addNumberOFSebha(){
@@ -60,9 +83,9 @@ class MainProvider extends ChangeNotifier
 
       }
 
-      String replaceArabicNumber(String input) {
-  const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  const arabic = ['۰', '۱', '۲', '۳', '٤', '۵', '٦', '۷', '۸', '۹'];
+    String replaceArabicNumber(String input){
+       const english = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+       const arabic = ['۰', '۱', '۲', '۳', '٤', '۵', '٦', '۷', '۸', '۹'];
 
   for (int i = 0; i < english.length; i++) {
     input = input.replaceAll(english[i], arabic[i]);
@@ -106,7 +129,6 @@ class MainProvider extends ChangeNotifier
         final loadedData = await rootBundle.loadString('assets/files/quran_files/$index.txt');
             quranData= loadedData;
             ayat = quranData.trim().split('\n');
-            print(index);
              notifyListeners();
         
        }
@@ -121,7 +143,7 @@ class MainProvider extends ChangeNotifier
         bool? isFlaged ()  {
         for(int i =0;i<ayat.length;i++){
           if(selectedAya==ayat[i]){
-            print('---------$selectedAya--------');
+            
             if(itemScrollController.isAttached){
                itemScrollController.scrollTo(
                index: selectedAyaIndex,

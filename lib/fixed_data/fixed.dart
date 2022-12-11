@@ -4,21 +4,16 @@ import 'package:islami_app/screens/quran_screen/quran_screen.dart';
 import 'package:islami_app/screens/radio_screen/radio_screen.dart';
 import 'package:islami_app/screens/sebha_screen/sebha_screen.dart';
 
+import '../screens/settings_screen/settings.dart';
+
 List<Widget> screensList=const[
   RadioScreen(),
   SebhaScreen(),
   HadeethScreen(),
-  QuranScreen()
+  QuranScreen(),
+  SettingsScreen()
 ];
-
-List<BottomNavigationBarItem>bottomNavBarItemList=[
-  BottomNavigationBarItem(icon: Image.asset('assets/images/radio_blue.png',height: 30,),label: 'Radio',backgroundColor:const Color(0xffB7935F) ),
-              BottomNavigationBarItem(icon: Image.asset('assets/images/sebha_blue.png',height: 30),label: 'Sebha',backgroundColor:const Color(0xffB7935F)),
-              BottomNavigationBarItem(icon: Image.asset('assets/images/Path 1.png',height: 30),label: 'Hadeath',backgroundColor:const Color(0xffB7935F)),
-              BottomNavigationBarItem(icon: Image.asset('assets/images/moshaf_gold.png',height: 30,color: Colors.white,),label: 'Quran',backgroundColor:const Color(0xffB7935F)),
-];
-
-
+      
  List <String> suraNameList=["الفاتحه","البقرة","آل عمران","النساء","المائدة","الأنعام","الأعراف","الأنفال","التوبة","يونس","هود"
             ,"يوسف","الرعد","إبراهيم","الحجر","النحل","الإسراء","الكهف","مريم","طه","الأنبياء","الحج","المؤمنون"
             ,"النّور","الفرقان","الشعراء","النّمل","القصص","العنكبوت","الرّوم","لقمان","السجدة","الأحزاب","سبأ"

@@ -1,18 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:islami_app/screens/hadeeth_screen/hadeeth.dart';
-import 'package:provider/provider.dart';
 
-import '../../app_provider_st_mng/main_provider.dart';
 import '../main_layout/widget.dart';
 
 class HadeeathDetailesScreen extends StatelessWidget {
   
-    String? title;
-    String? body;
-    HadeeathDetailesScreen({super.key,this.title,this.body});
+    final String? title;
+    final String? body;
+    const HadeeathDetailesScreen({super.key,this.title,this.body});
 
   static String routName='ahadeethDetailes';
 
@@ -41,7 +35,7 @@ class HadeeathDetailesScreen extends StatelessWidget {
                   )
               ),
               child: Container(
-                  margin: EdgeInsets.all(30),
+                  margin: const EdgeInsets.all(30),
                   child: SingleChildScrollView(
                     child: Column(
                       children: [

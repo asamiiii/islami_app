@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islami_app/app_theme/main_theme.dart';
 import 'package:islami_app/screens/sebha_screen/widgets.dart';
 
 

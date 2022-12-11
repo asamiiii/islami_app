@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:islami_app/main.dart';
 import 'package:islami_app/screens/quran_screen/quran_screen_deatailes.dart';
 import 'package:islami_app/screens/quran_screen/widgets.dart';
 import 'package:provider/provider.dart';
 
 import '../../app_provider_st_mng/main_provider.dart';
-import '../../app_theme/main_theme.dart';
+import '../../app_theme/light_theme.dart';
 import '../../fixed_data/fixed.dart';
 import 'quran_screen_flagged.dart';
 
@@ -86,7 +83,7 @@ class QuranScreen extends StatelessWidget {
                 if(myProvider.ayat.isNotEmpty){
                              myProvider.ayat.clear();
                                   }
-                print(myProvider.selectedSuraOfAyaIndex!);
+                //print(myProvider.selectedSuraOfAyaIndex!);
                 Navigator.of(context).push(
                             MaterialPageRoute(builder:(context) =>
                              QuranScreenDetailesSelected(

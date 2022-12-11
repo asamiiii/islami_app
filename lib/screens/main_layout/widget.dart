@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:islami_app/app_provider_st_mng/main_provider.dart';
 import 'package:provider/provider.dart';
-import '../../app_theme/main_theme.dart';
-import '../../fixed_data/fixed.dart';
+import '../../app_theme/light_theme.dart';
 
 
 class MainBgImage extends StatelessWidget {
@@ -10,12 +9,14 @@ class MainBgImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var myProvider=Provider.of<MainProvider>(context);
     return Container(
           
-          decoration: const BoxDecoration(
+          decoration:  BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(
-                'assets/images/bg3.png'),
+            image: myProvider.darkMode! ? const AssetImage(
+                'assets/images/bg3.png'):const AssetImage(
+                'assets/images/bg.png'),
             fit: BoxFit.fill,
           ),
           //shape: BoxShape.circle,
@@ -32,22 +33,23 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       var myProvider=Provider.of<MainProvider>(context);
+
+
+List<BottomNavigationBarItem>bottomNavBarItemList=[
+              BottomNavigationBarItem(icon: Image.asset('assets/images/radio_blue.png',height: 30, color:myProvider.changeIconColor(0)),label: 'Radio',backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
+              BottomNavigationBarItem(icon: Image.asset('assets/images/sebha_blue.png',height: 30,color:myProvider.changeIconColor(1)),label: 'Sebha',backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
+              BottomNavigationBarItem(icon: Image.asset('assets/images/Path 1.png',height: 30,color:myProvider.changeIconColor(2)),label: 'Hadeath',backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
+              BottomNavigationBarItem(icon: Image.asset('assets/images/moshaf_gold.png',height: 30,color: myProvider.changeIconColor(3)),label: 'Quran',backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
+              BottomNavigationBarItem(icon: Icon(Icons.settings,color:myProvider.changeIconColor(4)),label: 'Settings',backgroundColor:myProvider.darkMode !? goldColorMainColor:bottomNavColor),
+];
     return BottomNavigationBar(
-            unselectedIconTheme:const IconThemeData(
-              color: Colors.white
-            ) ,
-            selectedIconTheme:const IconThemeData(
-              color: Colors.black
-            ) ,
-            unselectedLabelStyle: const TextStyle(color: Colors.black),
-            selectedLabelStyle: const TextStyle(color: Colors.white),
-            showUnselectedLabels: true,
-            selectedItemColor: Colors.black,
-            unselectedItemColor: Colors.white,
+            
             currentIndex: myProvider.currentIndexx,
             onTap: myProvider.changeIndex,
-            backgroundColor: goldColorMainColor,
+            backgroundColor: myProvider.darkMode !? goldColorMainColor:bottomNavColor,
             items: bottomNavBarItemList,
           );
+
+          
   }
 }

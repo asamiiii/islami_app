@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:islami_app/screens/hadeeth_screen/widgets.dart';
 import 'package:provider/provider.dart';
-
 import '../../app_provider_st_mng/main_provider.dart';
-import '../../app_theme/main_theme.dart';
-import '../../fixed_data/fixed.dart';
+import '../../app_theme/light_theme.dart';
 import 'hadeeth_detailes.dart';
 
 class HadeethScreen extends StatelessWidget {
