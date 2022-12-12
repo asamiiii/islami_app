@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
     Locale('en', ''),
     Locale('ar', ''), 
   ],
+  locale:  Locale(value.isArabic! ? value.arLanguage:value.enLanguage),
         routes:{
           HadeeathDetailesScreen.routName:(context) =>  const HadeeathDetailesScreen()},
         debugShowCheckedModeBanner: false,

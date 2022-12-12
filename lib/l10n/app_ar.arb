@@ -6,5 +6,9 @@
     "quran": "قراّن",
     "hadeeth": "حديث",
     "sebha": "سبحة",
-    "radio": "راديو"
+    "radio": "راديو",
+    "darkMode": "وضع ليلي",
+    "lightMode": "وضع عادي",
+    "arLanguage": "العربيه",
+    "enLanguage": "الانجليزية"
 }

@@ -19,6 +19,9 @@ class MainProvider extends ChangeNotifier
    bool? darkMode = false;
    int sebhaCounter = 0;
    int tasbeehIndex=0;
+   String arLanguage='ar';
+   String enLanguage='en';
+   bool? isArabic=false;
 
      final ItemScrollController itemScrollController =ItemScrollController();
   final ItemPositionsListener itemPositionsListener =ItemPositionsListener.create();
@@ -27,6 +30,24 @@ class MainProvider extends ChangeNotifier
    {
        modeVariable! ? darkMode=true:darkMode=false;
        notifyListeners();
+   }
+
+   String changeLanguage(bool? LangVariable)
+   {
+      if(LangVariable==true){
+        isArabic = true;
+        notifyListeners();
+        print(isArabic);
+        return arLanguage;
+      }
+       else if(LangVariable==false) {
+        isArabic=false;
+        notifyListeners();
+        print(isArabic);
+        return enLanguage;
+       }
+       return '';
+       
    }
 
     Color changeIconColor(int index){

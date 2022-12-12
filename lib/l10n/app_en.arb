@@ -6,6 +6,10 @@
     "quran": "Quran",
     "hadeeth": "Hadeeath",
     "sebha": "Sebha",
-    "radio": "Radio"
+    "radio": "Radio",
+    "darkMode": "Dark Mode",
+    "lightMode": "Light Mode",
+    "arLanguage": "Arabic",
+    "enLanguage": "English"
 
 }
